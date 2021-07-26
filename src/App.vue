@@ -29,4 +29,9 @@ export default {
 </script>
 
 <style>
+#app {
+  margin: 0 auto;
+  max-width: 75rem;
+  margin-bottom: 4rem;
+}
 </style>
