@@ -1,0 +1,52 @@
+system:
+  - name: '{$host}'
+    desc: 博客网址
+  - name: '{$name}'
+    desc: 博客标题
+  - name: '{$subname}'
+    desc: 博客副标题
+  - name: '{$theme}'
+    desc: 主题名称
+  - name: '{$style}'
+    desc: 样式名称
+  - name: '{$copyright}'
+    desc: 版权说明
+  - name: '{$zblogphp}'
+    desc: Z-BlogPHP 版本信息（无链接）
+    note: Z-BlogPHP 1.7.X
+  - name: '{$zblogphphtml}'
+    desc: Z-BlogPHP 链接（长）
+    note: <a href="https://www.zblogcn.com/" title="Z-BlogPHP 1.7.X Build XXXXXX" target="_blank">Z-BlogPHP 1.7.X</a>
+  - name: '{$zblogphpabbrhtml}'
+    desc: Z-BlogPHP 链接（短）
+    note: <a href="https://www.zblogcn.com/" title="Z-BlogPHP 1.7.X Build XXXXXX" target="_blank">Z-BlogPHP</a>
+  - name: '{$language}'
+    desc: 网站语言
+    note: zh-CN
+  - name: '{$header}'
+    desc: 页面头部变量
+    note: 方便插件插入CSS、JS等脚本或其它META信息，需要在</head>前输出；
+  - name: '{$footer}'
+    desc: 页面尾部变量
+    note: 方便插件插入 JS 脚本或其它信息，需要在</body>前输出；
+  - name: '{$type}'
+    desc: 页面类型
+    note: 页面分为index、category、article、page、author、date、tag。
+  - name: '{$page}'
+    desc: 当前页面页码
+    note: 适用列表页；
+  - name: '{$user.ID}'
+    desc: 当前登录用户 ID
+    note: 请参考用户标签
+  - name: '{$user.Name}'
+    desc: 当前登录用户名
+    note: 请参考用户标签
+  - name: '{$socialcomment}'
+    desc: 社会化评论区
+    note: 加载第三方评论代码，可用于文章页面等；
+  - name: '{$cookiespath}'
+    desc: cookie的路径
+    note: 如将Z-BlogPHP安装在子目录，该路径则为「/子目录名」；
+  - name: '{$path}'
+    desc: 网站目录物理路径
+    note: 注意：该路径应仅用于文件读取操作，不应直接输出造成安全隐患；
