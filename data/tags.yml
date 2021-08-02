@@ -99,3 +99,52 @@ cate:
   - name: '{$category.Meta}'
     desc: '分类扩展数据( php 序列化字符串)'
     note: '更多请参考 扩展标签'
+pagebar:
+  -
+    name: '{$pagebar.PageBarCount}'
+    desc: 分页长度
+    note:
+  -
+    name: '{$pagebar.PageCount}'
+    desc: 每页显示文章数量
+    note:
+  -
+    name: '{$pagebar.Name}'
+    desc: 分页名称
+    note:
+  -
+    name: '{$pagebar.PageAll}'
+    desc: 总页码数
+    note:
+  -
+    name: '{$pagebar.PageNow}'
+    desc: 当前页码
+    note:
+  -
+    name: '{$pagebar.PageFirst}'
+    desc: 起始页码
+    note:
+  -
+    name: '{$pagebar.PageLast}'
+    desc: 尾页页码
+    note:
+  -
+    name: '{$pagebar.PagePrevious}'
+    desc: 上一页 ID
+    note:
+  -
+    name: '{$pagebar.PageNext}'
+    desc: 下一页 ID
+    note:
+  -
+    name: '{$pagebar.prevbutton}'
+    desc: 上一页 Url
+    note: <a href="{$pagebar.prevbutton}">« 更早的文章</a>
+  -
+    name: '{$pagebar.nextbutton}'
+    desc: 下一页 Url
+    note: <a href="{$pagebar.nextbutton}">之后的文章 »</a>
+  -
+    name: '{$pagebar.buttons}'
+    desc: 页码关联数组
+    note: 键名为页码，键值为页码对应的链接。其中有4个特殊键名‹‹ 、‹、›、››分别代表第一页、上一页、下一页、最后页。如{$pagebar.buttons[3]}为第3页链接，{$pagebar.buttons['››']}为最后一页链接。注意：‹、›只有当上下页存在时不为空，使用时应注意判别。
