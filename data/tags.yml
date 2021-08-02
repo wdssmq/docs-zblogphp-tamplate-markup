@@ -11,8 +11,11 @@ system:
     desc: 样式名称
   - name: '{$copyright}'
     desc: 版权说明
+  - name: '{$version}'
+    desc: Z-BlogPHP 版本号
+    note: '17XXXX'
   - name: '{$zblogphp}'
-    desc: Z-BlogPHP 版本信息（无链接）
+    desc: Z-BlogPHP 版本信息
     note: Z-BlogPHP 1.7.X
   - name: '{$zblogphphtml}'
     desc: Z-BlogPHP 链接（长）
