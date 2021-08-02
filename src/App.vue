@@ -1,5 +1,7 @@
 <template>
-  {{ msg }}
+  <!-- {{ msg }} -->
+  <h1>Z-BlogPHP 模板语法汇总</h1>
+  <p>本页面构建地址：<a href="https://github.com/wdssmq/docs-zblogphp-tamplate-markup" target="_blank" title="wdssmq/docs-zblogphp-tamplate-markup: Z-BlogPHP 模板语法汇总">https://github.com/wdssmq/docs-zblogphp-tamplate-markup</a></p>
   <tags-table
     v-for="(subTags, name) in db.tags"
     :cate="name"

@@ -148,3 +148,95 @@ pagebar:
     name: '{$pagebar.buttons}'
     desc: 页码关联数组
     note: 键名为页码，键值为页码对应的链接。其中有4个特殊键名‹‹ 、‹、›、››分别代表第一页、上一页、下一页、最后页。如{$pagebar.buttons[3]}为第3页链接，{$pagebar.buttons['››']}为最后一页链接。注意：‹、›只有当上下页存在时不为空，使用时应注意判别。
+article:
+  -
+    name: '{$article.ID}'
+    desc: 文章ID
+    note:
+  -
+    name: '{$article.Title}'
+    desc: 文章标题
+    note:
+  -
+    name: '{$article.Alias}'
+    desc: 文章标题别名
+    note: 未设置则等同于Title
+  -
+    name: '{$article.IsTop}'
+    desc: 文章是否置顶
+    note:
+  -
+    name: '{$article.Intro}'
+    desc: 文章摘要
+    note:
+  -
+    name: '{$article.Content}'
+    desc: 文章正文
+    note:
+  -
+    name: '{$article.FirstImg}'
+    desc: 文章第一张图片
+    note: 该图为文章中的第一张图片(1.7版添加)
+  -
+    name: '{$article.Thumb}'
+    desc: 文章第一张图片的缩略图
+    note: 该图为文章中第一张图片的缩略图，生成的缩略图尺寸请到后台【网站设置】【全局设置】中配置(1.7版添加)
+  -
+    name: '{$article.Url}'
+    desc: 文章链接
+    note:
+  -
+    name: '{$article.Status}'
+    desc: 文章状态
+    note:
+  -
+    name: '{$article.IsLock}'
+    desc: 是否禁止评论
+    note:
+  -
+    name: '{$article.CommNums}'
+    desc: 文章评论数
+    note:
+  -
+    name: '{$article.ViewNums}'
+    desc: 文章浏览数
+    note:
+  -
+    name: '{$article.Time(XXX)}'
+    desc: 文章发布时间
+    note: XXX具体内容参考时间标签
+  -
+    name: '{$article.Category.XXX}'
+    desc: 文章分类数据
+    note: XXX具体内容参考分类标签
+  -
+    name: '{$article.Author.XXX}'
+    desc: 文章作者数据
+    note: XXX具体内容参考用户标签
+  -
+    name: '{$article.Tags.XXX}'
+    desc: 文章标签数组
+    note: XXX具体内容参考Tag标签，注意$article.Tags是个Tag类实例数组
+  -
+    name: '{$article.Prev.Url}'
+    desc: 上一篇URL
+    note:
+  -
+    name: '{$article.Next.Url}'
+    desc: 下一篇URL
+    note:
+  -
+    name: '{$article.Prev.Title}'
+    desc: 上一篇标题
+    note:
+  -
+    name: '{$article.Next.Title}'
+    desc: 下一篇标题
+    note:
+  -
+    name: '{$article.Type}'
+    desc: 文章类型
+    note: 0为普通文章，1为普通页面。其它类型还在设计中。
+
+# Convert Table to YAML - Table Convert Online
+# https://tableconvert.com/?output=yaml
