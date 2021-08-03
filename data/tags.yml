@@ -302,6 +302,63 @@ comment:
     name: '{$comment.Time(XXX)}'
     desc: 评论发布时间
     note: 具体时间参考时间标签
+author:
+   -
+      name: '{$author.Url}'
+      desc: 用户页面链接
+      note:
+   -
+      name: '{$author.Name}'
+      desc: 用户名
+      note:
+   -
+      name: '{$author.Alias}'
+      desc: 用户别名
+      note:
+   -
+      name: '{$author.StaticName}'
+      desc: 用户静态名
+      note: 存在别名时调用别名，不存在则调用用户名
+   -
+      name: '{$author.Level}'
+      desc: 用户级别
+      note: 数值
+   -
+      name: '{$author.LevelName}'
+      desc: 用户级别名
+      note:
+   -
+      name: '{$author.Email}'
+      desc: 用户邮箱
+      note:
+   -
+      name: '{$author.HomePage}'
+      desc: 用户主页
+      note:
+   -
+      name: '{$author.Intro}'
+      desc: 用户摘要
+      note:
+   -
+      name: '{$author.Avatar}'
+      desc: 用户头像
+      note:
+   -
+      name: '{$author.Articles}'
+      desc: 用户发表文章数
+      note:
+   -
+      name: '{$author.Pages}'
+      desc: 用户创建页面数
+      note:
+   -
+      name: '{$author.Comments}'
+      desc: 用户发表评论数
+      note:
+   -
+      name: '{$author.Uploads}'
+      desc: 用户上传文件数
+      note:
 
 # Convert Table to YAML - Table Convert Online
 # https://tableconvert.com/?output=yaml
