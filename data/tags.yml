@@ -53,6 +53,19 @@ system:
   - name: '{$path}'
     desc: 网站目录物理路径
     note: 注意：该路径应仅用于文件读取操作，不应直接输出造成安全隐患；
+tag:
+  -
+    name: '{$tag.Name}'
+    desc: 标签名
+    note:
+  -
+    name: '{$tag.Url}'
+    desc: 标签链接
+    note:
+  -
+    name: '{$tag.Count}'
+    desc: 标签下文章数
+    note:
 cate:
   - name: '{$category.ID}'
     desc: '分类ID'
