@@ -1,0 +1,31 @@
+name: Release
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - "v*" # Push events to matching v*, i.e. v1.0, v21.15.10
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    env:
+      ZIP_NAME: zbp_markup
+    steps:
+      - name: Checkout code # Checkout
+        uses: actions/checkout@v2
+      - name: Install vite
+        run: npm i
+      - name: Build vue
+        run: npm run build
+      - name: GZip
+        run: |
+          mv dist ${ZIP_NAME}
+          tar -czvf ${ZIP_NAME}.tar.gz ${ZIP_NAME}
+        env:
+          ZIP_NAME: ${{ env.ZIP_NAME }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        # if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: Release ${{ github.ref }}
+          files: ${{ env.ZIP_NAME }}.tar.gz
