@@ -1,23 +1,36 @@
 <template>
   <div>
     <h1 class="tags-title">{{ cate }}</h1>
-    <div class="cards-row">
+    <div class="cards-row is-flex is-flex-wrap">
       <template v-for="(tag, index) in tags" :key="tag">
         <div class="card-col" :class="ext === index ? `col-ext` : ``">
-          <div
-            class="card-wrap"
-            @click="fnSwitchExt(index, tag)"
-            :class="ext === index ? 'flipped' : ''"
-          >
+          <div class="card-content" :class="ext === index ? 'flipped' : ''">
             <div class="card-box front">
-              <div :class="`${cate}-${index}`">
-                {{ tag.name }}
+              <div class="is-flex jcsb">
+                <div :class="`${cate}-${index}`">
+                  {{ tag.name }}
+                </div>
+                <button
+                  class="btn"
+                  :data-clipboard-target="`.${cate}-${index}`"
+                >
+                  复制
+                </button>
               </div>
-              <div class="tag-desc">{{ tag.desc }}</div>
+              <div class="tag-desc is-flex jcsb">
+                {{ tag.desc }}
+                <button v-if="tag.note" @click="fnSwitchExt(index, tag)">
+                  备注
+                </button>
+                <button v-else disabled>备注为空</button>
+              </div>
             </div>
-            <div class="card-box back">
-              <div :class="`${cate}-${index}`">
+            <div class="card-box back" @click="fnSwitchExt(index, tag)">
+              <div :class="`${cate}-${index}-back`">
                 {{ tag.name }}
+                <button @click="fnSwitchExt(index, tag)">
+                  返回
+                </button>
               </div>
               <div class="tag-note">
                 {{ tag.note || `${tag.desc} - 备注为空` }}
@@ -43,7 +56,9 @@ const fnSwitchExt = async (index, tag) => {
   ext.value = ext.value === index ? -1 : index;
   if (!tag.note) {
     await sleep(1700);
-    ext.value = -1;
+    if (ext.value === index) {
+      ext.value = -1;
+    }
   }
 };
 
@@ -64,6 +79,18 @@ clipboard.on("error", function (e) {
 .tags-title {
   font-size: 23px;
 }
+.is-flex {
+  display: flex;
+  &.is-flex-wrap {
+    flex-wrap: wrap;
+  }
+  &.jcsa {
+    justify-content: space-around;
+  }
+  &.jcsb {
+    justify-content: space-between;
+  }
+}
 .cards-row {
   display: flex;
   flex-wrap: wrap;
@@ -74,7 +101,7 @@ clipboard.on("error", function (e) {
       width: 100%;
     }
   }
-  .card-wrap {
+  .card-content {
     margin: 0.75em;
     position: relative;
     // backface-visibility: hidden;
@@ -108,6 +135,10 @@ clipboard.on("error", function (e) {
   color: #4a4a4a;
   display: block;
   padding: 0.55rem;
+  .tag-desc,
+  .tag-note {
+    margin-top: 0.3rem;
+  }
 }
 </style>
 

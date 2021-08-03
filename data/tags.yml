@@ -431,39 +431,39 @@ module-content:
       note: 系统自动更新
 module-by-name:
   -
-    name: '{$modules["moduleFileName"].ID}'
+    name: '{$modules["modName"].ID}'
     desc: 内部ID
     note:
   -
-    name: '{$modules["moduleFileName"].Name}'
+    name: '{$modules["modName"].Name}'
     desc: 模块名称
     note:
   -
-    name: '{$modules["moduleFileName"].FileName}'
+    name: '{$modules["modName"].FileName}'
     desc: 文件名
     note: 文件名应是唯一的，如为主题添加模块请以theme_主题ID_filename命名，同理，如为插件添加模块请以theme_插件ID_filename命名
   -
-    name: '{$modules["moduleFileName"].Content}'
+    name: '{$modules["modName"].Content}'
     desc: 模块内容
     note:
   -
-    name: '{$modules["moduleFileName"].HtmlID}'
+    name: '{$modules["modName"].HtmlID}'
     desc: htmlID
     note:
   -
-    name: '{$modules["moduleFileName"].Type}'
+    name: '{$modules["modName"].Type}'
     desc: 模块类型
     note: ul表示列表型，div表示混杂型
   -
-    name: '{$modules["moduleFileName"].MaxLi}'
+    name: '{$modules["modName"].MaxLi}'
     desc: ul类型模块显示的最大列数
     note: 默认为10。该数值不会影响存储，只会限制前端显示条数
   -
-    name: '{$modules["moduleFileName"].Source}'
+    name: '{$modules["modName"].Source}'
     desc: 模块属性
     note: system=系统模块，theme=主题模块，plugin=插件模块
   -
-    name: '{$modules["moduleFileName"].IsHideTitle}'
+    name: '{$modules["modName"].IsHideTitle}'
     desc: 是否隐藏标题
     note: 1表示隐藏,0表示不隐藏，默认不隐藏
 
