@@ -23,17 +23,29 @@ jobs:
           tar -czvf ${ZIP_NAME}.tar.gz ${ZIP_NAME}
         env:
           ZIP_NAME: ${{ env.ZIP_NAME }}
+      - name: Get Tag
+        id: get_tag
+        env:
+          REF: ${{ github.ref }}
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          TAG=${REF/refs\/tags\/}
+          echo "::set-output name=tag::${TAG}"
       - name: Release
         id: release
         uses: softprops/action-gh-release@v1
         # if: startsWith(github.ref, 'refs/tags/')
+        env:
+          TAG: ${{steps.get_tag.outputs.tag}}
         with:
           # name: Release ${{ github.ref }}
           files: ${{ env.ZIP_NAME }}.tar.gz
           body: Release ${{ github.ref }}
       - name: Write
+        env:
+          RELEASE_URL: ${{steps.release.outputs.url}}
         run: |
-          echo ${{ steps.release.outputs.url }} > release.latest.txt
+          echo ${RELEASE_URL} > release.latest.txt
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
