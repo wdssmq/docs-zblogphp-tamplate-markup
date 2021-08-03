@@ -1,0 +1,115 @@
+<template>
+  <div>
+    <h1 class="tags-title">{{ cate }}</h1>
+    <div class="cards-row">
+      <template v-for="(tag, index) in tags" :key="tag">
+        <div class="card-col" :class="ext === index ? `col-ext` : ``">
+          <div
+            class="card-wrap"
+            @click="fnSwitchExt(index, tag)"
+            :class="ext === index ? 'flipped' : ''"
+          >
+            <div class="card-box front">
+              <div :class="`${cate}-${index}`">
+                {{ tag.name }}
+              </div>
+              <div class="tag-desc">{{ tag.desc }}</div>
+            </div>
+            <div class="card-box back">
+              <div :class="`${cate}-${index}`">
+                {{ tag.name }}
+              </div>
+              <div class="tag-note">
+                {{ tag.note || `${tag.desc} - 备注为空` }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+defineProps({
+  tags: Object,
+  cate: String,
+});
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+// 卡片翻转
+const ext = ref(-1);
+const fnSwitchExt = async (index, tag) => {
+  ext.value = ext.value === index ? -1 : index;
+  if (!tag.note) {
+    await sleep(1700);
+    ext.value = -1;
+  }
+};
+
+import Clipboard from "clipboard";
+const clipboard = new Clipboard(".btn");
+clipboard.on("success", async function (e) {
+  e.trigger.innerHTML = "成功";
+  await sleep(1700);
+  e.trigger.innerHTML = "复制";
+  // e.clearSelection();
+});
+clipboard.on("error", function (e) {
+  e.trigger.innerHTML = "复制失败";
+});
+</script>
+
+<style lang="scss" scoped>
+.tags-title {
+  font-size: 23px;
+}
+.cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  .card-col {
+    transition: all 0.5s;
+    width: 25%;
+    &.col-ext {
+      width: 100%;
+    }
+  }
+  .card-wrap {
+    margin: 0.75em;
+    position: relative;
+    // backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    .back {
+      transform: rotateY(180deg);
+      display: none;
+    }
+    &.flipped {
+      transform: rotateY(180deg);
+      .front {
+        display: none;
+      }
+      .back {
+        display: block;
+      }
+    }
+  }
+}
+#tags-module-by-name .card-col {
+  width: 33.33%;
+  &.col-ext {
+    width: 100%;
+  }
+}
+.card-box {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%);
+  color: #4a4a4a;
+  display: block;
+  padding: 0.55rem;
+}
+</style>
+
+
+
