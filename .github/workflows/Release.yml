@@ -38,8 +38,8 @@ jobs:
         env:
           TAG: ${{steps.get_tag.outputs.tag}}
         with:
-          name: ${{ env.ZIP_NAME }} Build ${{ TAG }}
-          body: ${{ env.ZIP_NAME }} Build ${{ TAG }} Release.
+          name: ${{ env.ZIP_NAME }} Build ${{ env.TAG }}
+          body: ${{ env.ZIP_NAME }} Build ${{ env.TAG }} Release.
           files: ${{ env.ZIP_NAME }}.tar.gz
       - name: Write
         env:
