@@ -148,7 +148,7 @@ pagebar:
     name: '{$pagebar.buttons}'
     desc: 页码关联数组
     note: 键名为页码，键值为页码对应的链接。其中有4个特殊键名‹‹ 、‹、›、››分别代表第一页、上一页、下一页、最后页。如{$pagebar.buttons[3]}为第3页链接，{$pagebar.buttons['››']}为最后一页链接。注意：‹、›只有当上下页存在时不为空，使用时应注意判别。
-article:
+single:
   -
     name: '{$article.ID}'
     desc: 文章ID
@@ -237,6 +237,71 @@ article:
     name: '{$article.Type}'
     desc: 文章类型
     note: 0为普通文章，1为普通页面。其它类型还在设计中。
+comment:
+  -
+    name: '{$comment.ID}'
+    desc: 评论ID
+    note:
+  -
+    name: '{$comment.FloorID}'
+    desc: 评论楼号
+    note: 子评论不加入楼号计数，默认为0
+  -
+    name: '{$comment.Level}'
+    desc: 评论层级
+    note: 0表示顶层，1表示2层，2表示3层，3表示4层，大于4层的返回4
+  -
+    name: '{$comment.ParentID}'
+    desc: 评论父ID
+    note: 上一层评论ID，自身为顶层则为0
+  -
+    name: '{$comment.RootID}'
+    desc: 评论根ID
+    note: 最顶层评论ID，自身为顶层则为0
+  -
+    name: '{$comment.LogID}'
+    desc: 评论所属文章/页面ID
+    note:
+  -
+    name: '{$comment.Author.Name}'
+    desc: 评论作者
+    note: 本表仅列出常用的作者相关标签，更多可用标签请参考 用户标签
+  -
+    name: '{$comment.Author.HomePage}'
+    desc: 评论网址
+    note:
+  -
+    name: '{$comment.Author.Email}'
+    desc: 评论邮箱
+    note:
+  -
+    name: '{$comment.Author.Avatar}'
+    desc: 评论头像地址
+    note:
+  -
+    name: '{$comment.Post.Url}'
+    desc: 评论所属文章的链接
+    note:
+  -
+    name: '{$comment.Post.Title}'
+    desc: 评论所属文章的标题
+    note:
+  -
+    name: '{$comment.Content}'
+    desc: 评论正文
+    note:
+  -
+    name: '{$comment.IP}'
+    desc: 评论者IP
+    note:
+  -
+    name: '{$comment.Agent}'
+    desc: 评论者客户端信息
+    note:
+  -
+    name: '{$comment.Time(XXX)}'
+    desc: 评论发布时间
+    note: 具体时间参考时间标签
 
 # Convert Table to YAML - Table Convert Online
 # https://tableconvert.com/?output=yaml
