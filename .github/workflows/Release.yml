@@ -3,7 +3,7 @@ on:
   push:
     # Sequence of patterns matched against refs/tags
     tags:
-      - "v*" # Push events to matching v*, i.e. v1.0, v21.15.10
+      - "v-*" # Push events to matching v*, i.e. v1.0, v21.15.10
 jobs:
   build:
     name: Create Release
@@ -25,11 +25,11 @@ jobs:
           ZIP_NAME: ${{ env.ZIP_NAME }}
       - name: Get Tag
         id: get_tag
+        if: startsWith(github.ref, 'refs/tags/v-')
         env:
           REF: ${{ github.ref }}
-        if: startsWith(github.ref, 'refs/tags/')
         run: |
-          TAG=${REF/refs\/tags\/}
+          TAG=${REF/refs\/tags\/v-}
           echo "::set-output name=tag::${TAG}"
       - name: Release
         id: release
@@ -38,9 +38,9 @@ jobs:
         env:
           TAG: ${{steps.get_tag.outputs.tag}}
         with:
-          # name: Release ${{ github.ref }}
+          name: ${{ env.ZIP_NAME }} Build ${{ TAG }}
+          body: ${{ env.ZIP_NAME }} Build ${{ TAG }} Release.
           files: ${{ env.ZIP_NAME }}.tar.gz
-          body: Release ${{ github.ref }}
       - name: Write
         env:
           RELEASE_URL: ${{steps.release.outputs.url}}
