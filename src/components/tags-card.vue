@@ -25,7 +25,7 @@
                 <button v-else disabled>备注为空</button>
               </div>
             </div>
-            <div class="card-box back" @click="fnSwitchExt(index, tag)">
+            <div class="card-box back">
               <div :class="`${cate}-${index}-back`">
                 {{ tag.name }}
                 <button @click="fnSwitchExt(index, tag)">
