@@ -1,9 +1,10 @@
 <template>
   <div>
     <h1 class="tags-title">{{ cate }}</h1>
+    <!-- {{ screenWidth }} -->
     <div class="cards-row is-flex is-flex-wrap">
       <template v-for="(tag, index) in tags" :key="tag">
-        <div class="card-col" :class="ext === index ? `col-ext` : ``">
+        <div class="card-col" :class="fnGenCardClass(index, ext, lstExt)">
           <div class="card-content" :class="ext === index ? 'flipped' : ''">
             <div class="card-box front">
               <div class="is-flex jcsb">
@@ -28,9 +29,7 @@
             <div class="card-box back">
               <div :class="`${cate}-${index}-back`">
                 {{ tag.name }}
-                <button @click="fnSwitchExt(index, tag)">
-                  返回
-                </button>
+                <button @click="fnSwitchExt(index, tag)">返回</button>
               </div>
               <div class="tag-note">
                 {{ tag.note || `${tag.desc} - 备注为空` }}
@@ -48,18 +47,32 @@ import { ref } from "vue";
 defineProps({
   tags: Object,
   cate: String,
+  screenWidth: Number,
 });
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 // 卡片翻转
 const ext = ref(-1);
+const lstExt = ref(-1);
 const fnSwitchExt = async (index, tag) => {
   ext.value = ext.value === index ? -1 : index;
+  if (ext.value === index) {
+    lstExt.value = index;
+  }
   if (!tag.note) {
     await sleep(1700);
     if (ext.value === index) {
       ext.value = -1;
     }
   }
+};
+
+const fnGenCardClass = (index, ext, lstExt) => {
+  const arr = [
+    ext === index ? "col-ext" : "",
+    lstExt === index ? "col-lst" : "",
+  ];
+  return arr.join(" ");
 };
 
 import Clipboard from "clipboard";
@@ -96,7 +109,6 @@ clipboard.on("error", function (e) {
   flex-wrap: wrap;
   .card-col {
     transition: all 0.5s;
-    width: 25%;
     &.col-ext {
       width: 100%;
     }
@@ -122,12 +134,6 @@ clipboard.on("error", function (e) {
     }
   }
 }
-#tags-module-by-name .card-col {
-  width: 33.33%;
-  &.col-ext {
-    width: 100%;
-  }
-}
 .card-box {
   background-color: #fff;
   border-radius: 4px;
@@ -138,6 +144,40 @@ clipboard.on("error", function (e) {
   .tag-desc,
   .tag-note {
     margin-top: 0.3rem;
+  }
+}
+.col-lst .card-box {
+  background-color: #eee;
+}
+
+.card-col {
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .card-col {
+    width: 50%;
+  }
+  #tags-module-by-name .card-col {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-col {
+    width: 33.33%;
+  }
+  #tags-module-by-name .card-col {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-col {
+    width: 25%;
+  }
+  #tags-module-by-name .card-col {
+    width: 33.33%;
   }
 }
 </style>
