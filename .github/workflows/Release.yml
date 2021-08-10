@@ -62,12 +62,12 @@ jobs:
       #     HOST: ${{secrets.SERVER_IP}}
       #   run: |
       #     ssh-keyscan -t rsa ${HOST} >> ~/.ssh/known_hosts
-      - name: deploy file to server
-        uses: wlixcc/SFTP-Deploy-Action@v1.0
-        with:
-          username: 'root'   #ssh user name
-          server: '${{ secrets.SERVER_IP }}' #引用之前创建好的secret
-          port: ${{ secrets.SERVER_PORT }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} #引用之前创建好的secret
-          local_path: './zbp_markup/*'  # 对应我们项目build的文件夹路径
-          remote_path: '/home/www/zbp_markup'
+      # - name: deploy file to server
+      #   uses: wlixcc/SFTP-Deploy-Action@v1.0
+      #   with:
+      #     username: 'root'   #ssh user name
+      #     server: '${{ secrets.SERVER_IP }}' #引用之前创建好的secret
+      #     port: ${{ secrets.SERVER_PORT }}
+      #     ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} #引用之前创建好的secret
+      #     local_path: './zbp_markup/*'  # 对应我们项目build的文件夹路径
+      #     remote_path: '/home/www/zbp_markup'
