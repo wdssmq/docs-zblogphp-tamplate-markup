@@ -2,7 +2,17 @@
   <!-- {{ msg }} -->
   <h1>Z-BlogPHP 模板语法汇总</h1>
   <p>
-    本页面构建地址：<a
+    完整文档：
+    <a
+      href="https://docs.zblogcn.com/php/#/"
+      target="_blank"
+      title="Z-BlogPHP 官方文档"
+      >https://docs.zblogcn.com/php/</a
+    >
+  </p>
+  <p>
+    本页面构建地址：
+    <a
       href="https://github.com/wdssmq/docs-zblogphp-tamplate-markup"
       target="_blank"
       title="wdssmq/docs-zblogphp-tamplate-markup: Z-BlogPHP 模板语法汇总"
