@@ -45,7 +45,7 @@
                 {{ tag.name }}
                 <button @click="fnSwitchExt(index, tag)">返回</button>
               </div>
-              <div class="tag-note" v-html="tag.note"></div>
+              <div class="tag-note" v-html="buildNoteHtml(tag.note)"></div>
               <!-- <div class="tag-note">
                 {{ tag.note || `${tag.desc} - 备注为空` }}
               </div> -->
@@ -66,6 +66,22 @@ const props = defineProps({
   screenWidth: Number,
 });
 const emit = defineEmits(["changeTab"]);
+
+const buildNoteHtml = (note) => {
+  if (!note) {
+    return "";
+  }
+  return note.replace(/<code>(.+)<\/code>/, function (a0, b1) {
+    // console.log(arguments);
+    return a0.replace(b1, html2Escape(b1));
+  });
+};
+
+const html2Escape = (sHtml) => {
+  return sHtml.replace(/[<>&"]/g, function (c) {
+    return { "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;" }[c];
+  });
+};
 
 // 延时函数
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
