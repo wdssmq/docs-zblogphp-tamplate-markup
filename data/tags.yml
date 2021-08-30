@@ -103,8 +103,8 @@ cate:
   - name: '{$category.LogTemplate}'
     desc: '分类下文章所用模板'
     note: '默认为 single'
-  - name: '{$category.Meta}'
-    desc: '分类扩展数据( php 序列化字符串)'
+  - name: '{$category.Metas.XXX}'
+    desc: '分类扩展数据'
     note: '更多请参考 扩展标签'
 author:
    -
@@ -332,15 +332,15 @@ comment:
     note: 本表仅列出常用的作者相关标签，更多可用标签请参考 用户标签
   -
     name: '{$comment.Author.HomePage}'
-    desc: 评论网址
+    desc: 评论作者网址
     note:
   -
     name: '{$comment.Author.Email}'
-    desc: 评论邮箱
+    desc: 评论作者邮箱
     note:
   -
     name: '{$comment.Author.Avatar}'
-    desc: 评论头像地址
+    desc: 评论作者头像地址
     note:
   -
     name: '{$comment.Post.Url}'
