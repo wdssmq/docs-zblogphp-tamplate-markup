@@ -126,7 +126,7 @@ author:
    -
       name: '{$author.Level}'
       desc: 用户级别
-      note: 数值
+      note: 参考：「<a href="https://docs.zblogcn.com/php/#/books/start-faq?id=%e7%94%a8%e6%88%b7%e7%ad%89%e7%ba%a7%e5%88%92%e5%ae%9a" target="_blank" title="用户等级划定">用户等级划定</a>」
    -
       name: '{$author.LevelName}'
       desc: 用户级别名
