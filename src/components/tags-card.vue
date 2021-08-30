@@ -31,9 +31,10 @@
                 {{ tag.name }}
                 <button @click="fnSwitchExt(index, tag)">返回</button>
               </div>
-              <div class="tag-note">
+              <div class="tag-note" v-html="tag.note"></div>
+              <!-- <div class="tag-note">
                 {{ tag.note || `${tag.desc} - 备注为空` }}
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
