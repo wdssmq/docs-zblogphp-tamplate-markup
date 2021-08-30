@@ -20,12 +20,14 @@
     >
   </p>
   <tags-card
-    v-for="(subTags, name) in db.tags"
+    v-for="(subTags, name) in tags"
     :cate="name"
+    :meta="tagsMeta[name] ? tagsMeta[name] : {}"
     :screenWidth="screenWidth"
     :id="`tags-${name}`"
     :tags="subTags"
     :key="name"
+    @changeTab="updateTags"
   ></tags-card>
 </template>
 
@@ -40,7 +42,8 @@ export default {
     return {
       msg: "App.vue",
       screenWidth: document.body.clientWidth, // 屏幕尺寸
-      db,
+      tags: db.tags,
+      tagsMeta: db["tags-meta"],
     };
   },
   mounted() {
@@ -51,6 +54,15 @@ export default {
         _this.screenWidth = window.screenWidth;
       })();
     };
+  },
+  methods: {
+    updateTags: function (name, from, to) {
+      const curArry = db.tags[name];
+      this.tags[name] = curArry.map((item) => {
+        item.name = item.name.replace(from, to);
+        return item;
+      });
+    },
   },
   components: {
     TagsCard,

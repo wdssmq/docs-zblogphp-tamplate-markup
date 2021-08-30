@@ -1,6 +1,20 @@
 <template>
   <div>
     <h1 class="tags-title">{{ cate }}</h1>
+    <p v-if="meta && meta.tabs">
+      <template v-for="tab in meta.tabs" :key="tab">
+        <label :for="tab">
+          <input
+            type="radio"
+            :name="`${cate}-tab`"
+            :id="tab"
+            @click="fnSwitchTab(tab)"
+          />
+          {{ tab }}
+        </label>
+      </template>
+      <!-- {{ meta.tabs }} -->
+    </p>
     <!-- {{ screenWidth }} -->
     <div class="cards-row is-flex is-flex-wrap">
       <template v-for="(tag, index) in tags" :key="tag">
@@ -45,11 +59,15 @@
 
 <script setup>
 import { ref } from "vue";
-defineProps({
+const props = defineProps({
   tags: Object,
+  meta: Object,
   cate: String,
   screenWidth: Number,
 });
+const emit = defineEmits(["changeTab"]);
+
+// 延时函数
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // 卡片翻转
@@ -66,6 +84,15 @@ const fnSwitchExt = async (index, tag) => {
       ext.value = -1;
     }
   }
+};
+
+// 分区 tab 切换
+const lstTab = ref("");
+const fnSwitchTab = (to) => {
+  let from = lstTab.value == "" ? props.meta.tabs[0] : lstTab.value;
+  console.log(from);
+  emit("changeTab", props.cate, from, to);
+  lstTab.value = to;
 };
 
 const fnGenCardClass = (index, ext, lstExt) => {

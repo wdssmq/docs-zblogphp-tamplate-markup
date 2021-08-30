@@ -1,0 +1,9 @@
+author:
+  tabs:
+    - author
+    - user
+    - article.Author
+cate:
+  tabs:
+    - category
+    - article.Category
