@@ -38,12 +38,6 @@ system:
   - name: '{$page}'
     desc: 当前页面页码
     note: 适用列表页；
-  - name: '{$user.ID}'
-    desc: 当前登录用户 ID
-    note: 请参考用户标签
-  - name: '{$user.Name}'
-    desc: 当前登录用户名
-    note: 请参考用户标签
   - name: '{$socialcomment}'
     desc: 社会化评论区
     note: 加载第三方评论代码，可用于文章页面等；
@@ -278,15 +272,15 @@ single:
   -
     name: '{$article.Category.XXX}'
     desc: 文章分类数据
-    note: XXX具体内容参考分类标签
+    note: XXX 具体内容参考分类标签
   -
     name: '{$article.Author.XXX}'
     desc: 文章作者数据
-    note: XXX具体内容参考用户标签
+    note: XXX 具体内容参考用户标签
   -
-    name: '{$article.Tags.XXX}'
+    name: '{$article.Tags}'
     desc: 文章标签数组
-    note: XXX具体内容参考Tag标签，注意$article.Tags是个Tag类实例数组
+    note: '<code>{if count($article.Tags)}{foreach $article.Tags as $tag}<a class="post-tag tag" href="{$tag.Url}" title="{$tag.Name}" rel="tag">{$tag.Name}</a>{/foreach}{/if}</code>'
   -
     name: '{$article.Prev.Url}'
     desc: 上一篇URL
