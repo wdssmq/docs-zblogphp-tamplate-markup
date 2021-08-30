@@ -223,12 +223,24 @@ single:
     note:
   -
     name: '{$article.Alias}'
-    desc: 文章标题别名
-    note: 未设置则等同于Title
+    desc: 文章别名
+    note:
+  -
+    name: '{$article.AliasFirst}'
+    desc: 文章别名或标题
+    note: 未设置别名时返回 Title 属性
+  -
+    name: '{$article.Url}'
+    desc: 文章链接
+    note:
   -
     name: '{$article.IsTop}'
     desc: 文章是否置顶
     note:
+  -
+    name: '{$article.TopType}'
+    desc: 文章置顶类型
+    note: global，index，category
   -
     name: '{$article.Intro}'
     desc: 文章摘要
@@ -238,20 +250,24 @@ single:
     desc: 文章正文
     note:
   -
-    name: '{$article.FirstImg}'
+    name: '{$article.AllImages[0]}'
     desc: 文章第一张图片
     note: 该图为文章中的第一张图片(1.7版添加)
   -
-    name: '{$article.Thumb}'
-    desc: 文章第一张图片的缩略图
-    note: 该图为文章中第一张图片的缩略图，生成的缩略图尺寸请到后台【网站设置】【全局设置】中配置(1.7版添加)
+    name: '{$article.ImageCount}'
+    desc: 文章图片计数
+    note: 返回 $article.AllImages 数组的计数(1.7版添加)；
   -
-    name: '{$article.Url}'
-    desc: 文章链接
-    note:
+    name: '{$article.Thumbs(640, 360, 1, false)[0]}'
+    desc: 文章第一张图片的缩略图
+    note: 该图为文章中第一张图片的缩略图(1.7版添加)
   -
     name: '{$article.Status}'
-    desc: 文章状态
+    desc: 文章状态（数字）
+    note:
+  -
+    name: '{$article.StatusName}'
+    desc: 文章状态（名）
     note:
   -
     name: '{$article.IsLock}'
@@ -266,9 +282,17 @@ single:
     desc: 文章浏览数
     note:
   -
-    name: '{$article.Time(XXX)}'
+    name: '{$article.Time("PostTime","Y-m-d H:i:s")}'
     desc: 文章发布时间
-    note: XXX具体内容参考时间标签
+    note:
+  -
+    name: '{$article.Time("CreateTime","Y-m-d H:i:s")}'
+    desc: 文章创建时间
+    note:
+  -
+    name: '{$article.Time("UpdateTime","Y-m-d H:i:s")}'
+    desc: 文章更新时间
+    note:
   -
     name: '{$article.Category.XXX}'
     desc: 文章分类数据
@@ -280,7 +304,19 @@ single:
   -
     name: '{$article.Tags}'
     desc: 文章标签数组
-    note: '<code>{if count($article.Tags)}{foreach $article.Tags as $tag}<a class="post-tag tag" href="{$tag.Url}" title="{$tag.Name}" rel="tag">{$tag.Name}</a>{/foreach}{/if}</code>'
+    note: '<code>{if $article.TagsCount}{foreach $article.Tags as $tag}<a class="post-tag tag" href="{$tag.Url}" title="{$tag.Name}" rel="tag">{$tag.Name}</a>{/foreach}{/if}</code>'
+  -
+    name: '{$article.FirstTag}'
+    desc: 第一个标签对象
+    note:
+  -
+    name: '{$article.TagsCount}'
+    desc: 文章标签计数
+    note:
+  -
+    name: '{$article.TagsName}'
+    desc: 逗号分隔的文章标签
+    note:
   -
     name: '{$article.Prev.Url}'
     desc: 上一篇URL
@@ -300,7 +336,11 @@ single:
   -
     name: '{$article.Type}'
     desc: 文章类型
-    note: 0为普通文章，1为普通页面。其它类型还在设计中。
+    note: 0 为普通文章，1 为普通页面。其它类型还在设计中。
+  -
+    name: '{$article.TypeName}'
+    desc: 文章类型
+    note: ARTICLE 为普通文章，PAGE 为普通页面。其它类型还在设计中。
 comment:
   -
     name: '{$comment.ID}'
