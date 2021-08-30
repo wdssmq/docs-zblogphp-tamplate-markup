@@ -22,15 +22,17 @@
           <div class="card-content" :class="ext === index ? 'flipped' : ''">
             <div class="card-box front">
               <div class="is-flex jcsb">
-                <div :class="`${cate}-${index}`">
+                <div :class="`${cate}-${index}`" class="tag-name">
                   {{ tag.name }}
                 </div>
-                <button
-                  class="btn"
-                  :data-clipboard-target="`.${cate}-${index}`"
-                >
-                  复制
-                </button>
+                <div>
+                  <button
+                    class="btn btn-copy"
+                    :data-clipboard-target="`.${cate}-${index}`"
+                  >
+                    复制
+                  </button>
+                </div>
               </div>
               <div class="tag-desc is-flex jcsb">
                 {{ tag.desc }}
@@ -213,6 +215,9 @@ clipboard.on("error", function (e) {
   }
   #tags-module-by-name .card-col {
     width: 50%;
+  }
+  .tag-name {
+    max-width: 83%;
   }
 }
 
