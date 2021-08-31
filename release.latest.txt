@@ -1,1 +1,2 @@
-https://github.com/wdssmq/docs-zblogphp-tamplate-markup/releases/tag/v-40
+https://github.com/wdssmq/docs-zblogphp-tamplate-markup/releases/tag/v-2021083111599
+https://uploads.github.com/repos/wdssmq/docs-zblogphp-tamplate-markup/releases/48715270/assets{?name,label}
