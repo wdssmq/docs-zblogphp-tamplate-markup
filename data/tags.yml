@@ -108,6 +108,10 @@ cate:
     note: '更多请参考 扩展标签'
 author:
    -
+      name: '{$author.ID}'
+      desc: 用户数字 ID
+      note:
+   -
       name: '{$author.Url}'
       desc: 用户页面链接
       note:
