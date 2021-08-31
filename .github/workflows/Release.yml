@@ -43,9 +43,11 @@ jobs:
           files: ${{ env.ZIP_NAME }}.tar.gz
       - name: Write
         env:
-          RELEASE_URL: ${{steps.release.outputs.url}}
+          RELEASE_URL_1: ${{steps.release.outputs.url}}
+          RELEASE_URL_2: ${{steps.release.outputs.upload_url}}
         run: |
-          echo ${RELEASE_URL} > release.latest.txt
+          echo ${RELEASE_URL_1} > release.latest.txt
+          echo ${RELEASE_URL_2} >> release.latest.txt
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
