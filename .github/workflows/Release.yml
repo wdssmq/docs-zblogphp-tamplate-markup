@@ -1,18 +1,16 @@
 name: Release
 on:
   push:
-    # Sequence of patterns matched against refs/tags
     tags:
-      - "v-*" # Push events to matching v*, i.e. v1.0, v21.15.10
+      - "v-*"
 jobs:
-  build:
-    name: Create Release
+  def:
     runs-on: ubuntu-latest
     env:
       ZIP_NAME: zbp_markup
     if: startsWith(github.ref, 'refs/tags/v-')
     steps:
-      - name: Checkout code # Checkout
+      - name: Checkout code
         uses: actions/checkout@v2
       - name: Install vite
         run: npm i
