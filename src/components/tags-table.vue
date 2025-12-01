@@ -1,10 +1,38 @@
+<script setup>
+import Clipboard from 'clipboard'
+
+defineProps({
+  tags: Object,
+  cate: String,
+})
+
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+const clipboard = new Clipboard('.btn')
+
+clipboard.on('success', async (e) => {
+  e.trigger.innerHTML = '成功'
+  await sleep(3000)
+  e.trigger.innerHTML = '复制'
+  e.clearSelection()
+})
+
+clipboard.on('error', (e) => {
+  e.trigger.innerHTML = '复制失败'
+})
+</script>
+
 <template>
   <div>
-    <h1 class="tags-title">{{ cate }}</h1>
+    <h1 class="tags-title">
+      {{ cate }}
+    </h1>
     <table class="tags-table">
       <tr>
         <th>标签</th>
-        <th class="w-5">复制</th>
+        <th class="w-5">
+          复制
+        </th>
         <th>含义</th>
         <th>备注</th>
       </tr>
@@ -23,30 +51,6 @@
     </table>
   </div>
 </template>
-
-<script setup>
-defineProps({
-  tags: Object,
-  cate: String,
-});
-
-import Clipboard from "clipboard";
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-const clipboard = new Clipboard(".btn");
-
-clipboard.on("success", async function (e) {
-  e.trigger.innerHTML = "成功";
-  await sleep(3000);
-  e.trigger.innerHTML = "复制";
-  e.clearSelection();
-});
-
-clipboard.on("error", function (e) {
-  e.trigger.innerHTML = "复制失败";
-});
-</script>
 
 <style lang="scss" scoped>
 .tags-title {
@@ -72,5 +76,3 @@ clipboard.on("error", function (e) {
   }
 }
 </style>
-
-
