@@ -21,9 +21,6 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^1.2.5
         version: 1.10.2(vite@2.9.18(sass@1.94.2))
-      '@vue/compiler-sfc':
-        specifier: ^3.0.5
-        version: 3.5.25
       eslint:
         specifier: ^9.38.0
         version: 9.39.1
